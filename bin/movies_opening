@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+
+
+MoviesOpening::CLI.new.call
