@@ -1,6 +1,2 @@
-require "movies_opening/version"
-
-module MoviesOpening
-  class Error < StandardError; end
-  # Your code goes here...
-end
+require_relative "./movies_opening/version"
+require_relative "./movies_opening/cli"
