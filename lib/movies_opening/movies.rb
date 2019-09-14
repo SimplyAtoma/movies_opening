@@ -9,4 +9,12 @@ class MoviesOpening::Movies
     #go to fandango
     #go to area code 
     #extract properties
+    movies << scrape_fandango
+    
+  end 
+  
+  def self.scrape_fandango 
+    doc = Nokogiri::HTML(open("https://www.fandango.com/movies-in-theaters")) 
+    binding.pry 
+  end
 end
