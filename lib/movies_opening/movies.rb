@@ -21,8 +21,8 @@ class MoviesOpening::Movies
     movie_cards = parsed_page.css("div.poster-card--title-block")
     movie_cards.each do |movie_card|
       movie = Movies.new
-      movie.name = first_movie.css("span.heading-style-1 browse-movielist--title poster-card--title").text
-      movie.url = first_movie.css('a')[0].attributes["href"].value 
+      movie.name = movie_card.css("span.heading-style-1 browse-movielist--title poster-card--title").text
+      movie.url = movie_card.css('a')[0].attributes["href"].value 
       movielist << movie
     end
     movielist
