@@ -25,5 +25,6 @@ class MoviesOpening::Movies
       movie.url = first_movie.css('a')[0].attributes["href"].value 
       movielist << movie
     end
+    movielist
   end
 end

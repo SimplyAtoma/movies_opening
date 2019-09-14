@@ -9,7 +9,7 @@ class MoviesOpening::CLI
   def list_movies
      puts "Movies playing today: "
      @movies = MoviesOpening::Movies.today
-     @movies.each.with_index(1) do |movie, i|
+     @movies.each.with_index(i) do |movie, i|
        puts "#{i}. #{movie.name} - plays at #{movie.time} - #{movie.price} per ticket - #{movie.available}\n"
      end
   end 
