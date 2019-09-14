@@ -1,4 +1,4 @@
-
+ 
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "movies_opening/version"
@@ -20,7 +20,6 @@ Gem::Specification.new do |spec|
 
     spec.metadata["homepage_uri"] = spec.homepage
     spec.metadata["source_code_uri"] = "https://github.com/SimplyAtoma/movies_opening"
-    spec.metadata["changelog_uri"] = ""
   else
     raise "RubyGems 2.0 or newer is required to protect against " \
       "public gem pushes."
@@ -39,4 +38,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec", "~> 3.0"
   spec.add_dependency "nokogiri"
+  spec.add_dependency "httparty"
 end
