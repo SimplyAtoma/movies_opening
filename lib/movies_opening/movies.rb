@@ -18,11 +18,12 @@ class MoviesOpening::Movies
     url = "https://www.fandango.com"
     unparsed_page = HTTParty.get(url)
     parsed_page = Nokogiri::HTML(unparsed_page)
-    movie_cards = parsed_page.css("div.fluid poster")
+    binding.pry
+    movie_cards = parsed_page.css("div.fluidposter")
     movie_cards.each do |movie_card|
       movie = Movies.new
       movie.name = movie_card.css("a.heading-style-1.heading-size-s.heading__movie-carousel")[0].text
-      movie.url = movie_card.css('a')[0].attributes["href"].value 
+      movie.url = movie_card.css('a')[0].attributes["href"].value
       movielist << movie
     end
     movielist
