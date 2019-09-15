@@ -15,15 +15,13 @@ class MoviesOpening::Movies
   
   def self.scrape_fandango 
     movielist = []
-    url = "https://www.fandango.com"
-    unparsed_page = HTTParty.get(url)
-    parsed_page = Nokogiri::HTML(unparsed_page)
+    parsed_page = Nokogiri::HTML(open("https://www.fandango.com"))
     binding.pry
-    movie_cards = parsed_page.css("div.fluidposter")
+    movie_cards = parsed_page.search("div.fluidposter")
     movie_cards.each do |movie_card|
-      movie = Movies.new
-      movie.name = movie_card.css("a.heading-style-1.heading-size-s.heading__movie-carousel")[0].text
-      movie.url = movie_card.css('a')[0].attributes["href"].value
+      movie = self.new
+      movie.name = movie_card.search("a.heading-style-1.heading-size-s.heading__movie-carousel")[0].text
+      movie.url = movie_card.search('a')[0].attributes["href"].value
       movielist << movie
     end
     movielist
