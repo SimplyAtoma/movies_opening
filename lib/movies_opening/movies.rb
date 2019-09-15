@@ -15,10 +15,10 @@ class MoviesOpening::Movies
   
   def self.scrape_fandango 
     movielist = []
-    url = "https://www.fandango.com/movies-in-theaters"
+    url = "https://www.fandango.com"
     unparsed_page = HTTParty.get(url)
     parsed_page = Nokogiri::HTML(unparsed_page)
-    movie_cards = parsed_page.css("div.poster-card--title-block")
+    movie_cards = parsed_page.css("div.fluid poster")
     movie_cards.each do |movie_card|
       movie = Movies.new
       movie.name = movie_card.css("a.heading-style-1.heading-size-s.heading__movie-carousel")[0].text
