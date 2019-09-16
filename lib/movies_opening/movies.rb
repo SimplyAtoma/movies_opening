@@ -16,11 +16,12 @@ class MoviesOpening::Movies
   def self.scrape_fandango 
     movielist = []
     parsed_page = Nokogiri::HTML(open("https://www.fandango.com"))
-    binding.pry
-    movie_cards = parsed_page.search("div.fluidposter")
+    movie_cards = parsed_page.search("div.fluid.poster")
     movie_cards.each do |movie_card|
       movie = self.new
       movie.name = movie_card.search("a.heading-style-1.heading-size-s.heading__movie-carousel")[0].text
+      movie.time = movie_card.search("time").text
+      movie.price = "$10.00"
       movie.url = movie_card.search('a')[0].attributes["href"].value
       movielist << movie
     end
