@@ -1,6 +1,10 @@
 # MoviesOpening
 
-
+Hello! this is my first repository and first ruby program. 
+This program goes to fandango.com and scrapes the site for movies that are playing in theaters.
+Then relays that information to the user and promts them for a command.
+This program contains two classes, one version file, and a file to create the enviorment for 
+proper use.
 
 ## Installation
 
