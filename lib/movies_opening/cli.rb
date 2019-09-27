@@ -7,6 +7,7 @@ class MoviesOpening::CLI
   end 
   
   def list_movies
+  
      puts "Movies playing today: "
      @movies = MoviesOpening::Movies.today
      @movies.each.with_index(1) do |movie, i|

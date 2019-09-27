@@ -1,15 +1,26 @@
 class MoviesOpening::Movies
   attr_accessor :name, :time, :price, :available, :url
+  
+  @@all = []
   def self.today
      self.scrape_movies
   end
   
   def self.scrape_movies
-    movies = []
     #goes to fandango
     #extract properties
-    movies = self.scrape_fandango
-    movies
+    self.scrape_fandango
+    @@all
+  end 
+  
+  def self.find_movie_by_word(word)
+    hold = []
+    @@all.each do |movie|
+      if movie.name.include?(word)
+       hold << movie
+     end
+    end
+    hold
   end 
   
   def self.scrape_fandango
@@ -24,9 +35,8 @@ class MoviesOpening::Movies
       movie.time = movie_card.search("time").text
       movie.price = "$10.00"
       movie.url = movie_card.search('a')[0].attributes["href"].value
-      movielist << movie
+      @@all << movie
       #the loop goes through the array makes a movie and assigns all the values of the name, day starts playing, price and url 
     end
-    movielist
   end
 end
